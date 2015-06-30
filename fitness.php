@@ -4,12 +4,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--<link rel="icon" type="image/ico" href=""/>-->
     <title>Fitness Rank</title>
 
     <!-- Bootstrap Core CSS -->
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
     <!-- Custom Fonts -->
     <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
@@ -20,12 +19,8 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script type="text/javascript" src="../js/bootstrap.js"></script>
-    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../js/silviomoreto-bootstrap-select/js/bootstrap-select.js"></script>   
-    
-    <!-- Additional JavaScript -->
-	<script src="https://raw.githubusercontent.com/1000hz/bootstrap-validator/master/js/validator.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -94,8 +89,13 @@
   <div class="bs-callout bs-callout-info" id="callout-alerts-no-default">
     <h4 class="section-header text-center">Fitness Ranking by the KU Alzheimers Disease Center </h4>
 	<br />    
-    <p>This App was created by the X Alzheimer's Disease Center. The algorithm for these rankings is based on that published by the American College of Sports Medicine Guidelines for Exercise Testing and Prescription, 9th Ed. and is currently being peer reviewed. Maximal exercise testing should be conducted on a treadmill, according to ACSM guidelines and safety recommendations. These are estimates only.</p>
-<p>This App will ask you to input your age, VO2max from a maximal exercise test and your sex. You will receive a percentile rank comparing you to people the same age and sex as you.</p>
+    <p>The rate of oxygen consumption during intense aerobic exercise - for instance, while using a treadmill at an exhaustive pace - is a vital determinant in a person's maximum endurance capacity for aerobic fitness during prolonged, sub-maximal aerobic exercise. Typically, this measure of aerobic fitness is denoted as one's <strong>VO<sub>2</sub> max</strong> score, which represents the maximum volume (V) of oxygen (O2) that one can use in one minute while breathing air at normal barometric pressure.</p>
+    <p>This is measured in milliters (ml) of oxygen consumed per kilogram (kg) of body weight per minute (min):</p>
+	<p class="text-center"><strong>ml <i class="fa fa-times"></i> kg<sup>1</sup> <i class="fa fa-times"></i> min<sup>1</sup></strong></p>
+	<p>The form fields below will ask you to enter your age, your VO<sub>2</sub> max score from a recent maximal exercise test, and your sex. From this information, the fitness calculator will generate a percentile rank representing your overall fitness, comparing your VO2max score to those of others in the same age/sex demographics as you.</p>
+    <p>This application was created as an effort of the <a href="http://www.kualzheimers.org/" target="_blank">Alzheimer's Disease Center</a>. The algorithm used for these rankings is based on that published by the <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4139760/" target="_blank">American College of Sports Medicine Guidelines for Exercise Testing and Prescription, 9th Ed.</a> and is currently being peer reviewed. Maximal exercise testing should be conducted on a treadmill, according to ACSM guidelines and safety recommendations. </p><br />
+    <p></p>
+    <div class="alert alert-success" role="alert"><p>Please note that these figures are estimates only. Your information will not be stored by this application, as the fitness calculator exists for demonstrative purposes only.</div>
   </div><br /><br /><br />
 
 <div class="row">
