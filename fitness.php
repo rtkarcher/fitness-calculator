@@ -43,8 +43,6 @@
 	.bs-callout-warning h4{color:#aa6708}
 	.bs-callout-info{border-left-color:#1b809e}
 	.bs-callout-info h4{color:#1b809e}
-
-	body { margin-top:20px; }
 	.panel-title {
 	    display: inline;
 		font-weight: bold; 
@@ -54,25 +52,9 @@
 	    font-weight: bold; 
 	    margin-right:50px;
 	}
-	.checkbox .pull-right { margin: 5px; }
-	.pl-ziro { padding-left: 0px; }
-	
     .section-header {
     	padding-bottom: 9px;
 		border-bottom: 1px solid #eee;
-    }
-    #collapseCalc {
-    	padding-top:10px;
-    }
-    #errmsg1 {
-    	padding-top:12px;
-    	font-size: 12px;
-    	color: #ce4844;
-    }
-    #errmsg2 {
-    	padding-top:12px;
-    	font-size: 12px;
-    	color: #ce4844;
     }
 </style>
 
