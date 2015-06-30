@@ -119,7 +119,8 @@
   </div>
   <br />
   <button class="btn btn-primary" type="button" id="calc">Calculate</button><br /><br />
-      <p id="debugOutput"></p>
+  <div id="fitnessRank"></div>
+  <p id="debugOutput"></p>
 </form>
 	<p id="result"></p>
   </div> <!-- End .col-xs-12 .col-sm-6 .col-md-8 -->
@@ -149,6 +150,10 @@ $("#calc").on("click", function(){
             var logout = Math.exp(x);
             var ranklong = (1.0 / (1 + logout)) * 100;
             var rank = ranklong.toFixed(1);
+            $("#fitnessRank").html(
+                "<div class='panel panel-success'><div class='panel-heading'><h3 class='panel-title'>Your Results:</h3></div><p class='panel-body'><br />The percentile rank of your overall fitness score is <strong>" + rank +"%</strong>, compared to your peers. <br /><br />This means that for every 100 people with whom you share the above attributes, there will be approximately " + parseInt(rank) + " people who will have a fitness score that is the same as yours or lower.<br /><br /></p></div>"
+                // Alternatively, we could use "Math.round(rank)" instead of "parseInt(rank)", depending on whether it would be more appropriate to round a percentile up or down...
+        );
             $("#debugOutput").html(
                 "<br /><br /><br /><br /><div class='panel panel-default'><div class='panel-heading'><h3 class='panel-title'>Debugging output:</h3></div><p class='panel-body'><br />a = " + a + " <br />b = " + b + "<br />c = " + c + "<br />d = " + d + "<br />e = " + e + "<br />f = " + f + "<br />p1 = " + p1 + " <br /> p2 = " + p2 + "<br /> x = "+ x +"<br /> logout = "+logout+"<br /> ranklong = "+ranklong+"<br /><br /></p></div>"
         );};
@@ -167,6 +172,10 @@ $("#calc").on("click", function(){
             var logout = Math.exp(x);
             var ranklong = (1.0 / (1 + logout)) * 100;
             var rank = ranklong.toFixed(1);
+            $("#fitnessRank").html(
+                "<div class='panel panel-success'><div class='panel-heading'><h3 class='panel-title'>Your Results:</h3></div><p class='panel-body'><br />The percentile rank of your overall fitness score is <strong>" + rank +"%</strong>, compared to your peers. <br /><br />This means that for every 100 people with whom you share the above attributes, there will be approximately " + parseInt(rank) + " people who will have a fitness score that is the same as yours or lower.<br /><br /></p></div>"
+                // Alternatively, we could use "Math.round(rank)" instead of "parseInt(rank)", depending on whether it would be more appropriate to round a percentile up or down...
+        );
             $("#debugOutput").html(
                 "<br /><br /><br /><br /><div class='panel panel-default'><div class='panel-heading'><h3 class='panel-title'>Debugging output:</h3></div><p class='panel-body'><br />a = " + a + " <br />b = " + b + "<br />c = " + c + "<br />d = " + d + "<br />e = " + e + "<br />f = " + f + "<br />p1 = " + p1 + " <br /> p2 = " + p2 + "<br /> x = "+ x +"<br /> logout = "+logout+"<br /> ranklong = "+ranklong+"<br /><br /></p></div>"
         );};
