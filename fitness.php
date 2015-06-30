@@ -101,24 +101,24 @@
 <div class="row">
   <div class="col-xs-12 col-sm-6 col-md-8">
 <form action="" id="calcform">
-  <div class="form-group">
-      <label for="age">What is your age? <small>(In years)</small></label>
-    <input type="number" min="0" class="form-control" name="age" id="age" placeholder="00">
-  </div>
-  <div class="form-group">
-      <label for="vomax">What is your current VO2 max score? <small>(This number can be entered with or without a decimal value)</small></label>
-    <input type="number" min="0.00" max="120.00" class="form-control" name="vomax" id="vomax" placeholder="0.00">
-  </div>
-  <div class="select">
-    <label for="sexInput">What is your sex?</label>
-    <select class="form-control" id="sexInput">
-      <option>Select one</option>
-      <option value="m" id="m">Male</option>
-      <option value="f" id="f">Female</option>
-    </select>
-  </div>
-  <br />
-  <button class="btn btn-primary" type="button" id="calc">Calculate</button><br /><br />
+	  <div class="form-group">
+    	<label for="ageInput">What is your age?</label>
+    	<input type="number" min="0" class="form-control" name="age" id="age" placeholder="00">
+  	  </div>
+  	<div class="form-group">
+    	<label for="vomaxInput">What is your current VO<sub>2</sub> max score?</label>
+    	<input type="number" min="0.00" max="120.00" class="form-control" name="vomax" id="vomax" placeholder="00.0">
+  	</div>
+  	<div class="radio">
+		<label class="radio-inline">
+	  	  <input type="radio" name="sex" value="0"> Male
+            </label><br />
+		<label class="radio-inline">
+	  	  <input type="radio" name="sex" value="1"> Female
+		</label>
+  	</div>
+  	<br />
+	<button class="btn btn-primary" id="calculate" type="button">Calculate</button><br /><br />
 </form>
 	<p id="result"></p>
   </div> <!-- End .col-xs-12 .col-sm-6 .col-md-8 -->
@@ -129,6 +129,52 @@
 
 
 <script type="text/javascript">
+//var calcForm = document.getElementById('calcform');
+var calcForm = document.forms["calcform"];
+var age = parseFloat(calcForm.elements['age']);
+var vomax = parseFloat(calcForm.elements['vomax']);
+
+var sex = ('input[name=sex]:checked').val();
+
+    $(document).ready(function(){
+        $("button[id='calculate']").click(function(){
+        	var radioValue = $("input[name='sex']:checked").val();
+            if(radioValue){
+                alert("Your are a - " + radioValue);
+            }
+        });
+        
+    });
+
+function calcFitnessScore() {
+    alert(sex);
+    
+    /*
+	var rank;
+    // If male:
+	if (sex == 0) {
+		var a = (-9.266519 + (-0.072175 * age) + (0.001209 * age * age));
+     	var b = (0.2091 + (0.001177 * age) + (-0.000006232 * (age * age))) * vomax;
+    	var exponent = -1 * (a + b);
+    	var logout = Math.exp(exponent);
+    	var ranklong = (1/(1+logout)) * 100;
+    	var rank = ranklong.toFixed(1);
+	}
+    // If female:
+    else { 			
+    	var a = (-9.2987421 + (0.0069102 * age) + (-0.0002642 * age * age));
+    	var b = (0.2502 + -(0.001242 * age) + (0.00004126 * age * age)) * vomax;
+    	var exponent = -1 * (a + b);
+    	var logout = Math.exp(exponent);
+    	var ranklong = (1/(1+logout)) * 100;
+    	var rank = ranklong.toFixed(1);
+	};
+
+	var fitnessScore = "The percentile rank of your overall fitness score is " + rank +"%, compared to your peers. <br />This means that for every 100 people with the same attributes as you, there are approximately " + rank + " who will have a fitness score that is the same as yours or lower.";
+
+    document.getElementById('result').innerHTML = fitnessScore;
+    */
+}
 </script>
 
 </body>
