@@ -101,24 +101,25 @@
 <div class="row">
   <div class="col-xs-12 col-sm-6 col-md-8">
 <form action="" id="calcform">
-	  <div class="form-group">
-    	<label for="ageInput">What is your age?</label>
-    	<input type="number" min="0" class="form-control" name="age" id="age" placeholder="00">
-  	  </div>
-  	<div class="form-group">
-    	<label for="vomaxInput">What is your current VO<sub>2</sub> max score?</label>
-    	<input type="number" min="0.00" max="120.00" class="form-control" name="vomax" id="vomax" placeholder="00.0">
-  	</div>
-  	<div class="radio">
-		<label class="radio-inline">
-	  	  <input type="radio" name="sex" value="0"> Male
-            </label><br />
-		<label class="radio-inline">
-	  	  <input type="radio" name="sex" value="1"> Female
-		</label>
-  	</div>
-  	<br />
-	<button class="btn btn-primary" id="calculate" type="button">Calculate</button><br /><br />
+  <div class="form-group">
+      <label for="ageInput">What is your age? <small>(In years)</small></label>
+    <input type="number" min="0" class="form-control" name="age" id="ageInput" placeholder="For example: 41">
+  </div>
+  <div class="form-group">
+      <label for="vomaxInput">What is your current VO<sub>2</sub> max score? <small>(This number can be entered with or without a decimal value)</small></label>
+    <input type="number" min="0.00" max="120.00" class="form-control" name="vomax" id="vomaxInput" placeholder="For example: 32.9">
+  </div>
+  <div class="select">
+    <label for="sexInput">What is your sex?</label>
+    <select class="form-control" id="sexInput">
+      <option>Select one</option>
+      <option value="m" id="m">Male</option>
+      <option value="f" id="f">Female</option>
+    </select>
+  </div>
+  <br />
+  <button class="btn btn-primary" type="button" id="calc">Calculate</button><br /><br />
+      <p id="debugOutput"></p>
 </form>
 	<p id="result"></p>
   </div> <!-- End .col-xs-12 .col-sm-6 .col-md-8 -->
@@ -129,26 +130,49 @@
 
 
 <script type="text/javascript">
-//var calcForm = document.getElementById('calcform');
-var calcForm = document.forms["calcform"];
-var age = parseFloat(calcForm.elements['age']);
-var vomax = parseFloat(calcForm.elements['vomax']);
-
-var sex = ('input[name=sex]:checked').val();
-
-    $(document).ready(function(){
-        $("button[id='calculate']").click(function(){
-        	var radioValue = $("input[name='sex']:checked").val();
-            if(radioValue){
-                alert("Your are a - " + radioValue);
-            }
-        });
-        
-    });
-
-function calcFitnessScore() {
-    alert(sex);
-}
+$("#calc").on("click", function(){
+    var age = parseInt($("#ageInput").val());
+    var vomax = parseFloat($("#vomaxInput").val());
+    
+    switch($("#sexInput").val())
+    {
+        case "m":{
+            var a = -9.266519;
+            var b = -0.072175 * age;
+            var c = 0.001209 * (Math.pow(age, 2));
+            var d = 0.2091;
+            var e = 0.001177 * age;
+            var f = -0.000006232 * (Math.pow(age, 2));
+            var p1 = a + b + c;
+            var p2 = (d + e + f) * vomax;
+            var x = (-1) * (p1 + p2);
+            var logout = Math.exp(x);
+            var ranklong = (1.0 / (1 + logout)) * 100;
+            var rank = ranklong.toFixed(1);
+            $("#debugOutput").html(
+                "<br /><br /><br /><br /><div class='panel panel-default'><div class='panel-heading'><h3 class='panel-title'>Debugging output:</h3></div><p class='panel-body'><br />a = " + a + " <br />b = " + b + "<br />c = " + c + "<br />d = " + d + "<br />e = " + e + "<br />f = " + f + "<br />p1 = " + p1 + " <br /> p2 = " + p2 + "<br /> x = "+ x +"<br /> logout = "+logout+"<br /> ranklong = "+ranklong+"<br /><br /></p></div>"
+        );};
+        break;
+           
+        case "f":{
+            var a = -9.2987421;
+            var b = 0.0069102 * age;
+            var c = -0.0002642 * (Math.pow(age, 2));
+            var d = 0.2502;
+            var e = -1 * (0.001242 * age);
+            var f = 0.00004126 * (Math.pow(age, 2));
+            var p1 = a + b + c;
+            var p2 = (d + e + f) * vomax;
+            var x = (-1) * (p1 + p2);
+            var logout = Math.exp(x);
+            var ranklong = (1.0 / (1 + logout)) * 100;
+            var rank = ranklong.toFixed(1);
+            $("#debugOutput").html(
+                "<br /><br /><br /><br /><div class='panel panel-default'><div class='panel-heading'><h3 class='panel-title'>Debugging output:</h3></div><p class='panel-body'><br />a = " + a + " <br />b = " + b + "<br />c = " + c + "<br />d = " + d + "<br />e = " + e + "<br />f = " + f + "<br />p1 = " + p1 + " <br /> p2 = " + p2 + "<br /> x = "+ x +"<br /> logout = "+logout+"<br /> ranklong = "+ranklong+"<br /><br /></p></div>"
+        );};
+        break;
+    }
+});
 </script>
 
 </body>
