@@ -10,6 +10,9 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
+	<!-- Custom CSS -->
+	<link rel="stylesheet" type="text/css" href="fitness.css">
+
     <!-- Custom Fonts -->
     <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
@@ -21,42 +24,16 @@
     <!-- Bootstrap Core JavaScript -->
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
+    
+    <!-- Custom JavaScript -->
+    <script type="text/javascript" src="fitness.js"></script>
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-<style type="text/css">
-	body{margin-top:20px; }
-	.bs-callout{padding:20px;margin:20px 0;border:1px solid #eee;border-left-width:5px;border-radius:3px}
-	.bs-callout h4{margin-top:0;margin-bottom:5px}
-	.bs-callout p:last-child{margin-bottom:0}
-	.bs-callout code{border-radius:3px}
-	.bs-callout+
-	.bs-callout{margin-top:-5px}
-	.bs-callout-danger{border-left-color:#ce4844}
-	.bs-callout-danger h4{color:#ce4844}
-	.bs-callout-warning{border-left-color:#aa6708}
-	.bs-callout-warning h4{color:#aa6708}
-	.bs-callout-info{border-left-color:#1b809e}
-	.bs-callout-info h4{color:#1b809e}
-	.panel-title {
-	    display: inline;
-		font-weight: bold; 
-	}
-	.legend {
-	    display: inline;
-	    font-weight: bold; 
-	    margin-right:50px;
-	}
-    .section-header {
-    	padding-bottom: 9px;
-		border-bottom: 1px solid #eee;
-    }
-</style>
 
 </head>
 <body>
@@ -95,65 +72,13 @@
       	  </select>
   		</div> <!-- End .select -->
   		<br />
-  		<button class="btn btn-primary" type="button" id="calc">Calculate</button><br /><br />
+  		<button class="btn btn-primary" type="button" id="calc" onclick="calculate()">Calculate</button><br /><br />
   		<div id="fitnessRank"></div>
 	  </form>
     </div> <!-- End .col-xs-12 .col-sm-6 .col-md-8 -->
   </div> <!-- End .row -->
   <br /><br /><br /><br /><br /><br />
 </div> <!-- End .container -->
-
-
-
-<script type="text/javascript">
-$("#calc").on("click", function(){
-    var age = parseInt($("#ageInput").val());
-    var vomax = parseFloat($("#vomaxInput").val());
-    
-    switch($("#sexInput").val())
-    {
-        case "m":{
-            var a = -9.266519;
-            var b = -0.072175 * age;
-            var c = 0.001209 * (Math.pow(age, 2));
-            var d = 0.2091;
-            var e = 0.001177 * age;
-            var f = -0.000006232 * (Math.pow(age, 2));
-        // Need to find a less redundant way to declare all variables from here down (including the HTML insert), since these are universal variables, but can't declare the variable expressions prior to declaring their requisite variables (vars. a-f)
-            var p1 = a + b + c;
-            var p2 = (d + e + f) * vomax;
-            var x = (-1) * (p1 + p2);
-            var logout = Math.exp(x);
-            var ranklong = (1.0 / (1 + logout)) * 100;
-            var rank = ranklong.toFixed(1);
-            $("#fitnessRank").html(
-                "<div class='panel panel-success'><div class='panel-heading'><h3 class='panel-title'>Your Results:</h3></div><p class='panel-body'><br />The percentile rank of your overall fitness score is <strong>" + rank +"%</strong>, compared to your peers. <br /><br />This means that for every 100 people with whom you share the above attributes, there will be approximately " + parseInt(rank) + " people who will have a fitness score that is the same as yours or lower.<br /><br /></p></div>"
-                // Alternatively, we could use "Math.round(rank)" instead of "parseInt(rank)", depending on whether it would be more appropriate to round a percentile up or down...
-        );};
-        break;
-           
-        case "f":{
-            var a = -9.2987421;
-            var b = 0.0069102 * age;
-            var c = -0.0002642 * (Math.pow(age, 2));
-            var d = 0.2502;
-            var e = -1 * (0.001242 * age);
-            var f = 0.00004126 * (Math.pow(age, 2));
-        // Need to find a less redundant way to declare all variables from here down (including the HTML insert), since these are universal variables, but can't declare the variable expressions prior to declaring their requisite variables (vars. a-f)
-            var p1 = a + b + c;
-            var p2 = (d + e + f) * vomax;
-            var x = (-1) * (p1 + p2);
-            var logout = Math.exp(x);
-            var ranklong = (1.0 / (1 + logout)) * 100;
-            var rank = ranklong.toFixed(1);
-            $("#fitnessRank").html(
-                "<div class='panel panel-success'><div class='panel-heading'><h3 class='panel-title'>Your Results:</h3></div><p class='panel-body'><br />The percentile rank of your overall fitness score is <strong>" + rank +"%</strong>, compared to your peers. <br /><br />This means that for every 100 people with whom you share the above attributes, there will be approximately " + parseInt(rank) + " people who will have a fitness score that is the same as yours or lower.<br /><br /></p></div>"
-                // Alternatively, we could use "Math.round(rank)" instead of "parseInt(rank)", depending on whether it would be more appropriate to round a percentile up or down...
-        );};
-        break;
-    }
-});
-</script>
 
 </body>
 </html>
