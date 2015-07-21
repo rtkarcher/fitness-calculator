@@ -9,12 +9,14 @@ More information on the metabolic equations used to calculate VO2 max scores can
 
 [![ScreenShot](https://raw.githubusercontent.com/rtkarcher/fitness-calculator/master/fitness_calc_screenshot.png)](http://rainerkarcher.com/tmp/fitness.php)
 
-
+Application
+---
+The application can be found here: [http://www.kumc.edu/fitness-ranking.html](http://www.kumc.edu/fitness-ranking.html)
 
 Demo
 ---
 
-The working demo can be found [here](http://rainerkarcher.com/tmp/fitness.php) and the JSFiddle is [here](https://jsfiddle.net/kctus3sx/).
+The working demo can be found [here](http://rainerkarcher.com/tmp/fitness.php), and there is also a JSFiddle [here](https://jsfiddle.net/kctus3sx/).
 
 Acknowledgments
 ---
